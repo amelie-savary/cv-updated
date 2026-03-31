@@ -152,47 +152,46 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
     <script>
-        document.querySelector('.btn-pdf').addEventListener('click', async () => {
-            const btn = document.querySelector('.btn-pdf');
-            const toolbar = document.querySelector('.cv-toolbar');
+      document.querySelector('.btn-pdf').addEventListener('click', async () => {
+        const btn = document.querySelector('.btn-pdf');
+        const toolbar = document.querySelector('.cv-toolbar');
     
-            toolbar.style.display = 'none';
-            btn.textContent = 'Generating…';
+        toolbar.style.display = 'none';
+        btn.textContent = 'Generating…';
     
-            const { jsPDF } = window.jspdf;
+        const { jsPDF } = window.jspdf;
+        const page = document.querySelector('.cv-page');
     
-            const canvas = await html2canvas(document.body, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: '#030412',
-                logging: false,
-                windowWidth: document.body.scrollWidth,
-                windowHeight: document.body.scrollHeight,
-                scrollX: 0,
-                scrollY: 0,
-            });
-    
-            const imgData = canvas.toDataURL('image/png');
-    
-            const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-            const pdfW = pdf.internal.pageSize.getWidth();
-            const pdfH = pdf.internal.pageSize.getHeight();
-    
-            const imgH = (canvas.height * pdfW) / canvas.width;
-    
-            if (imgH > pdfH) {
-                const scale = pdfH / imgH;
-                pdf.addImage(imgData, 'PNG', 0, 0, pdfW * scale, pdfH);
-            } else {
-                pdf.addImage(imgData, 'PNG', 0, 0, pdfW, imgH);
-            }
-    
-            pdf.save('amelie-savary-tolstoi-cv.pdf');
-    
-            toolbar.style.display = '';
-            btn.textContent = '↓ Export PDF';
+        const canvas = await html2canvas(page, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#030412',
+          logging: false,
         });
+    
+        const imgData = canvas.toDataURL('image/png');
+    
+        const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+        const pdfW = pdf.internal.pageSize.getWidth();
+        const pdfH = pdf.internal.pageSize.getHeight();
+    
+        const imgW = pdfW;
+        const imgH = (canvas.height * pdfW) / canvas.width;
+    
+        if (imgH > pdfH) {
+          const scale = pdfH / imgH;
+          pdf.addImage(imgData, 'PNG', 0, 0, imgW * scale, pdfH);
+        } else {
+          pdf.addImage(imgData, 'PNG', 0, 0, imgW, imgH);
+        }
+    
+        pdf.save('amelie-savary-tolstoi-cv.pdf');
+    
+        toolbar.style.display = '';
+        btn.textContent = '↓ Export PDF';
+      });
     </script>
 
 </body>
