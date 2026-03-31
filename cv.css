@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
-@import "tailwindcss";
-@theme {
+
+/* ============================================
+    CSS Variables / Theme
+============================================ */
+:root {
     --color-primary: #030412;
     --color-midnight: #06091f;
     --color-navy: #161a31;
@@ -31,61 +34,136 @@ body {
 }
 
 /* ============================================
+    Utility replacements (were Tailwind classes
+    applied via @apply in the original)
+============================================ */
+
+/* max-w-4xl mx-auto px-5 sm:px-10 pt-28 pb-20 */
+.cv-page {
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 7rem 1.25rem 5rem;
+}
+@media (min-width: 640px) {
+    .cv-page { padding-left: 2.5rem; padding-right: 2.5rem; }
+}
+
+/* grid grid-cols-1 md:grid-cols-[1fr_268px] gap-10 items-start */
+.cv-body-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+@media (min-width: 768px) {
+    .cv-body-grid { grid-template-columns: 1fr 268px; }
+}
+
+/* ============================================
     CV Page
 ============================================ */
 
 /* Toolbar */
 .cv-toolbar {
-    @apply fixed top-6 right-6 z-50 flex gap-3 items-center;
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 50;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
 }
 
 .btn-back {
-    @apply inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-medium
-            bg-white/5 border border-white/20 text-white/60 no-underline cursor-pointer
-            hover:bg-white/10 hover:text-white hover:-translate-y-0.5 duration-200;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.btn-back:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    transform: translateY(-0.125rem);
 }
 
 .btn-pdf {
-    @apply inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-bold
-            border-transparent cursor-pointer hover:-translate-y-0.5 duration-200;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.2s;
     color: #fff8f0;
     background: linear-gradient(135deg, var(--cv-amber), var(--cv-rust));
 }
-
 .btn-pdf:hover {
     filter: brightness(1.15);
+    transform: translateY(-0.125rem);
 }
 
 /* Background glows */
 .cv-glow {
-    @apply fixed pointer-events-none rounded-full opacity-15;
+    position: fixed;
+    pointer-events: none;
+    border-radius: 9999px;
+    opacity: 0.15;
     filter: blur(110px);
 }
 
 .cv-glow-tl {
-    @apply w-[500px] h-[500px] -top-36 -right-24;
+    width: 500px;
+    height: 500px;
+    top: -9rem;
+    right: -6rem;
     background: var(--cv-amber);
 }
 
 .cv-glow-bl {
-    @apply w-[400px] h-[400px] bottom-0 -left-24;
+    width: 400px;
+    height: 400px;
+    bottom: 0;
+    left: -6rem;
     background: var(--cv-crimson);
 }
 
 /* Header */
 .cv-header {
-    @apply pb-8 mb-10 relative;
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
     border-bottom: 1px solid rgba(214, 133, 27, 0.2);
 }
 
 .cv-header::after {
     content: "";
-    @apply absolute -bottom-px left-0 w-20 h-0.5 rounded-full;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 5rem;
+    height: 2px;
+    border-radius: 9999px;
     background: linear-gradient(to right, var(--cv-amber), var(--cv-rust));
 }
 
 .cv-name {
-    @apply text-5xl md:text-6xl font-black leading-none tracking-tight;
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.025em;
 }
 
 .cv-name-accent {
@@ -96,37 +174,58 @@ body {
 }
 
 .cv-subtitle {
-    @apply mt-1.5 text-lg font-light tracking-wide;
+    margin-top: 0.375rem;
+    font-size: 1.125rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
     color: var(--cv-taupe);
 }
 
 .cv-contacts {
-    @apply flex flex-wrap gap-x-6 gap-y-1.5 mt-4;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.5rem;
+    row-gap: 0.375rem;
+    margin-top: 1rem;
 }
 
 .cv-contact-item {
-    @apply flex items-center gap-1.5 text-xs;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
     color: rgba(125, 115, 97, 0.85);
 }
 
 .cv-contact-item a {
-    @apply no-underline hover:underline;
+    text-decoration: none;
     color: var(--cv-amber);
+}
+.cv-contact-item a:hover {
+    text-decoration: underline;
 }
 
 .cv-contact-dot {
-    @apply w-1.5 h-1.5 rounded-full inline-block shrink-0;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 9999px;
+    display: inline-block;
+    flex-shrink: 0;
     background: var(--cv-amber);
 }
 
 /* About Me */
 .cv-about {
-    @apply flex flex-col gap-3 pl-5 border-l-2;
-    border-color: rgba(214, 133, 27, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-left: 1.25rem;
+    border-left: 2px solid rgba(214, 133, 27, 0.3);
 }
 
 .cv-about-text {
-    @apply text-sm leading-relaxed;
+    font-size: 0.875rem;
+    line-height: 1.625;
     color: rgba(255, 240, 220, 0.7);
 }
 
@@ -137,64 +236,98 @@ body {
 
 /* Section title */
 .cv-section-title {
-    @apply flex items-center gap-3 mb-4 text-xs font-bold tracking-widest uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--cv-amber);
 }
 
 .cv-section-title::after {
     content: "";
-    @apply flex-1 h-px;
+    flex: 1;
+    height: 1px;
     background: rgba(214, 133, 27, 0.15);
 }
 
 /* Experience / project entry */
 .cv-entry {
-    @apply relative pl-5 mb-7;
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 1.75rem;
 }
 
 .cv-entry::before {
     content: "";
-    @apply absolute left-0 top-2 bottom-0 w-px;
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0;
+    width: 1px;
     background: rgba(214, 133, 27, 0.18);
 }
 
 .cv-entry::after {
     content: "";
-    @apply absolute -left-0.5 top-1.5 w-2 h-2 rounded-full;
+    position: absolute;
+    left: -0.125rem;
+    top: 0.375rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
     background: var(--cv-amber);
     box-shadow: 0 0 8px var(--cv-amber);
 }
 
 .cv-entry-header {
-    @apply flex justify-between items-start flex-wrap gap-1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.25rem;
 }
 
 .cv-entry-role {
-    @apply text-base font-bold;
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .cv-entry-date {
-    @apply text-xs whitespace-nowrap;
+    font-size: 0.75rem;
+    white-space: nowrap;
     color: rgba(125, 115, 97, 0.7);
 }
 
 .cv-entry-company {
-    @apply text-sm font-medium mt-0.5;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-top: 0.125rem;
     color: #c07a5a;
 }
 
 .cv-entry-desc {
-    @apply text-sm leading-relaxed mt-2;
+    font-size: 0.875rem;
+    line-height: 1.625;
+    margin-top: 0.5rem;
     color: rgba(255, 240, 220, 0.55);
 }
 
 /* Tags */
 .cv-tags {
-    @apply flex flex-wrap gap-1.5 mt-2.5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: 0.625rem;
 }
 
 .cv-tag {
-    @apply text-xs px-3 py-0.5 rounded-full;
+    font-size: 0.75rem;
+    padding: 0.125rem 0.75rem;
+    border-radius: 9999px;
     border: 1px solid rgba(214, 133, 27, 0.25);
     color: rgba(214, 133, 27, 0.75);
     background: rgba(214, 133, 27, 0.07);
@@ -202,58 +335,78 @@ body {
 
 /* Education */
 .cv-edu-degree {
-    @apply text-sm font-semibold;
+    font-size: 0.875rem;
+    font-weight: 600;
 }
 
 .cv-edu-school {
-    @apply text-xs mt-0.5;
+    font-size: 0.75rem;
+    margin-top: 0.125rem;
     color: #c07a5a;
 }
 
 .cv-edu-year {
-    @apply text-xs mt-0.5;
+    font-size: 0.75rem;
+    margin-top: 0.125rem;
     color: rgba(125, 115, 97, 0.7);
 }
 
 /* Sidebar card */
 .cv-sidebar-card {
-    @apply p-5 rounded-2xl mb-4 backdrop-blur-md;
+    padding: 1.25rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(12px);
     background: rgba(125, 41, 30, 0.08);
     border: 1px solid rgba(214, 133, 27, 0.12);
 }
 
 /* Skill bars */
 .cv-skill-row {
-    @apply flex items-center gap-3 mb-3;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
 }
 
 .cv-skill-name {
-    @apply text-xs w-24 shrink-0;
+    font-size: 0.75rem;
+    width: 6rem;
+    flex-shrink: 0;
     color: rgba(255, 240, 220, 0.65);
 }
 
 .cv-skill-track {
-    @apply flex-1 h-1 rounded-full overflow-hidden;
+    flex: 1;
+    height: 0.25rem;
+    border-radius: 9999px;
+    overflow: hidden;
     background: rgba(214, 133, 27, 0.1);
 }
 
 .cv-skill-fill {
-    @apply h-full rounded-full;
+    height: 100%;
+    border-radius: 9999px;
     background: linear-gradient(to right, var(--cv-amber), #e8a050);
 }
 
 /* Languages */
 .cv-lang-row {
-    @apply flex justify-between items-center mb-2.5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.625rem;
 }
 
 .cv-lang-name {
-    @apply text-sm;
+    font-size: 0.875rem;
     color: rgba(255, 240, 220, 0.7);
 }
 
 .cv-lang-badge {
-    @apply text-xs px-3 py-0.5 rounded-full;
+    font-size: 0.75rem;
+    padding: 0.125rem 0.75rem;
+    border-radius: 9999px;
     background: rgba(214, 133, 27, 0.12);
     color: var(--cv-amber);
     border: 1px solid rgba(214, 133, 27, 0.25);
@@ -261,12 +414,25 @@ body {
 
 /* Interests */
 .cv-interests {
-    @apply flex flex-wrap gap-1.5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
 }
 
 .cv-interest-pill {
-    @apply text-xs px-3 py-1 rounded-full;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
     background: rgba(125, 41, 30, 0.18);
     color: #c07a5a;
     border: 1px solid rgba(125, 41, 30, 0.35);
+}
+
+/* ============================================
+    Print / PDF export
+============================================ */
+@media print {
+    .cv-toolbar { display: none; }
+    .cv-glow { display: none; }
+    body { background: white; color: black; }
 }
