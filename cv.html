@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amélie — CV</title>
+    <link rel="stylesheet" href="src/cv.css" />
+</head>
+<body>
+
+    <div class="cv-glow cv-glow-tl"></div>
+    <div class="cv-glow cv-glow-bl"></div>
+
+    <!-- Toolbar -->
+    <div class="cv-toolbar">
+        <a href="index.html" class="btn-back">← Back</a>
+        <button class="btn-pdf" onclick="window.print()">↓ Export PDF</button>
+    </div>
+
+    <!-- Page -->
+    <div class="max-w-4xl mx-auto px-5 sm:px-10 pt-28 pb-20">
+
+        <!-- Header -->
+        <header class="cv-header">
+            <h1 class="cv-name">Amélie <span class="cv-name-accent">Savary--Tolstoï</span></h1>
+            <p class="cv-subtitle">BUT Métier du Multimédia et de l'Internet · Web Dev & Design</p>
+            <div class="cv-contacts">
+                <span class="cv-contact-item"><span class="cv-contact-dot"></span>Bordeaux, France</span>
+                <span class="cv-contact-item"><span class="cv-contact-dot"></span><a href="mailto:amelie.savary--tolstoi@mmibordeaux.com">amelie.savary--tolstoi@mmibordeaux.com</a></span>
+                <span class="cv-contact-item"><span class="cv-contact-dot"></span><a href="https://github.com/amelie-savary" target="_blank">github.com/amelie-savary</a></span>
+                <span class="cv-contact-item"><span class="cv-contact-dot"></span><a href="https://www.linkedin.com/in/am%C3%A9lie-savary-tolsto%C3%AF-15ab85331/" target="_blank">linkedin.com/in/amelie-savary-tolstoi</a></span>
+            </div>
+        </header>
+
+        <!-- Two-column body -->
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_268px] gap-10 items-start">
+
+            <!-- Main column -->
+            <main>
+
+                <!-- About Me -->
+                <section class="mb-10">
+                    <h2 class="cv-section-title">About Me</h2>
+                    <div class="cv-about">
+                        <p class="cv-about-text">
+                            I'm a second-year MMI student based in Bordeaux, passionate about building things for the web — from interactive 3D experiences to polished interfaces. I care deeply about the craft: clean code, thoughtful design, and experiences that feel alive.
+                        </p>
+                        <p class="cv-about-text">
+                            Outside of coding, you'll find me deep in a fantasy novel, sculpting 3D models in Blender, or lost in a video game for hours. I'm currently looking for an <strong>internship</strong> where I can bring both my dev skills and design sensibility to a real project.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Experience -->
+                <section class="mb-10">
+                    <h2 class="cv-section-title">Experience</h2>
+
+                    <div class="cv-entry">
+                        <div class="cv-entry-header">
+                            <span class="cv-entry-role">Data Analyst Intern</span>
+                            <span class="cv-entry-date">March 2025 – Aug 2025</span>
+                        </div>
+                        <div class="cv-entry-company">CHU Bordeaux · Bordeaux</div>
+                        <p class="cv-entry-desc">
+                            Conducted data analysis and visualization for clinical research projects. Developed automated reporting scripts using R and RStudio.
+                        </p>
+                        <div class="cv-tags">
+                            <span class="cv-tag">R</span>
+                            <span class="cv-tag">RStudio</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section class="mb-10">
+                    <h2 class="cv-section-title">Projects</h2>
+
+                    <div class="cv-entry">
+                        <div class="cv-entry-header">
+                            <span class="cv-entry-role">Portfolio 3D — Three.js</span>
+                            <span class="cv-entry-date">2026</span>
+                        </div>
+                        <p class="cv-entry-desc">
+                            Interactive 3D portfolio with custom models, orbit controls and responsive layout.
+                        </p>
+                        <div class="cv-tags">
+                            <span class="cv-tag">Three.js</span>
+                            <span class="cv-tag">GLSL</span>
+                            <span class="cv-tag">Vite</span>
+                            <span class="cv-tag">React</span>
+                            <span class="cv-tag">Tailwind CSS</span>
+                            <span class="cv-tag">HTML</span>
+                        </div>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-entry-header">
+                            <span class="cv-entry-role">Web doc — React Three Fiber</span>
+                            <span class="cv-entry-date">2025</span>
+                        </div>
+                        <p class="cv-entry-desc">
+                            Interactive web documentary on a 3D scene talking about women in video games, made alone using react three fiber.
+                        </p>
+                        <div class="cv-tags">
+                            <span class="cv-tag">React</span>
+                            <span class="cv-tag">Node.js</span>
+                            <span class="cv-tag">Three.js</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section class="mb-10">
+                    <h2 class="cv-section-title">Education</h2>
+
+                    <div class="cv-entry">
+                        <div class="cv-edu-degree">BUT Métier du Multimédia et de l'Internet</div>
+                        <div class="cv-edu-school">IUT de Bordeaux Montaigne</div>
+                        <div class="cv-edu-year">2023 – 2026 (in progress)</div>
+                    </div>
+
+                    <div class="cv-entry">
+                        <div class="cv-edu-degree">Baccalauréat Général · option NSI & LLCE</div>
+                        <div class="cv-edu-school">Lycée Victor Louis, Talence</div>
+                        <div class="cv-edu-year">2023 — mention Très Bien</div>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Sidebar -->
+            <aside>
+
+                <div class="cv-sidebar-card">
+                    <h2 class="cv-section-title">Languages</h2>
+                    <div class="cv-skill-row"><span class="cv-skill-name">HTML / CSS</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:95%"></div></div></div>
+                    <div class="cv-skill-row"><span class="cv-skill-name">JavaScript</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:85%"></div></div></div>
+                    <div class="cv-skill-row"><span class="cv-skill-name">React</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:80%"></div></div></div>
+                    <div class="cv-skill-row"><span class="cv-skill-name">Three.js</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:60%"></div></div></div>
+                    <div class="cv-skill-row"><span class="cv-skill-name">Laravel</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:75%"></div></div></div>
+                    <div class="cv-skill-row"><span class="cv-skill-name">PHP</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:90%"></div></div></div>
+                    <div class="cv-skill-row"><span class="cv-skill-name">R</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:30%"></div></div></div>
+                </div>
+
+                <div class="cv-sidebar-card">
+                    <h2 class="cv-section-title">Tools</h2>
+                    <div class="cv-skill-row"><span class="cv-skill-name">Vs Code</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:85%"></div></div></div>
+                    <div class="cv-skill-row"><span class="cv-skill-name">Git & GitHub</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:70%"></div></div></div>
+                    <div class="cv-skill-row"><span class="cv-skill-name">Figma</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:75%"></div></div></div>
+                    <div class="cv-skill-row"><span class="cv-skill-name">Blender</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:50%"></div></div></div>
+                    <div class="cv-skill-row"><span class="cv-skill-name">Davinci Resolve</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:70%"></div></div></div>
+                    <div class="cv-skill-row"><span class="cv-skill-name">Affinity</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:50%"></div></div></div>
+                    <div class="cv-skill-row"><span class="cv-skill-name">Creative Cloud</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:50%"></div></div></div>
+                </div>
+
+                <div class="cv-sidebar-card">
+                    <h2 class="cv-section-title">Languages</h2>
+                    <div class="cv-lang-row"><span class="cv-lang-name">French</span><span class="cv-lang-badge">Native</span></div>
+                    <div class="cv-lang-row"><span class="cv-lang-name">English</span><span class="cv-lang-badge">C1</span></div>
+                    <div class="cv-lang-row"><span class="cv-lang-name">Italian</span><span class="cv-lang-badge">B1</span></div>
+                </div>
+
+                <div class="cv-sidebar-card">
+                    <h2 class="cv-section-title">Interests</h2>
+                    <div class="cv-interests">
+                        <span class="cv-interest-pill">Video Games</span>
+                        <span class="cv-interest-pill">3D Art</span>
+                        <span class="cv-interest-pill">Fiction Writing</span>
+                        <span class="cv-interest-pill">Fantasy</span>
+                        <span class="cv-interest-pill">Retro Technology</span>
+                        <span class="cv-interest-pill">Music</span>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+</body>
+</html>

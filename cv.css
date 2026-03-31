@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
+@import "tailwindcss";
+@theme {
+    --color-primary: #030412;
+    --color-midnight: #06091f;
+    --color-navy: #161a31;
+    --color-indigo: #1f1e39;
+    --color-storm: #282b4b;
+    --color-aqua: #33c2cc;
+    --color-mint: #57db96;
+    --color-royal: #5c33cc;
+    --color-lavender: #7a57db;
+    --color-fuchsia: #ca2f8c;
+    --color-orange: #cc6033;
+    --color-sand: #d6995c;
+    --color-coral: #ea4884;
+
+    --cv-amber:   #d6851b;
+    --cv-taupe:   #7d7361;
+    --cv-void:    #080001;
+    --cv-crimson: #530910;
+    --cv-rust:    #7d291e;
+}
+
+body {
+    background: #030412;
+    font-family: "Funnel Display", sans-serif;
+    color: white;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* ============================================
+    CV Page
+============================================ */
+
+/* Toolbar */
+.cv-toolbar {
+    @apply fixed top-6 right-6 z-50 flex gap-3 items-center;
+}
+
+.btn-back {
+    @apply inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-medium
+            bg-white/5 border border-white/20 text-white/60 no-underline cursor-pointer
+            hover:bg-white/10 hover:text-white hover:-translate-y-0.5 duration-200;
+}
+
+.btn-pdf {
+    @apply inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-bold
+            border-transparent cursor-pointer hover:-translate-y-0.5 duration-200;
+    color: #fff8f0;
+    background: linear-gradient(135deg, var(--cv-amber), var(--cv-rust));
+}
+
+.btn-pdf:hover {
+    filter: brightness(1.15);
+}
+
+/* Background glows */
+.cv-glow {
+    @apply fixed pointer-events-none rounded-full opacity-15;
+    filter: blur(110px);
+}
+
+.cv-glow-tl {
+    @apply w-[500px] h-[500px] -top-36 -right-24;
+    background: var(--cv-amber);
+}
+
+.cv-glow-bl {
+    @apply w-[400px] h-[400px] bottom-0 -left-24;
+    background: var(--cv-crimson);
+}
+
+/* Header */
+.cv-header {
+    @apply pb-8 mb-10 relative;
+    border-bottom: 1px solid rgba(214, 133, 27, 0.2);
+}
+
+.cv-header::after {
+    content: "";
+    @apply absolute -bottom-px left-0 w-20 h-0.5 rounded-full;
+    background: linear-gradient(to right, var(--cv-amber), var(--cv-rust));
+}
+
+.cv-name {
+    @apply text-5xl md:text-6xl font-black leading-none tracking-tight;
+}
+
+.cv-name-accent {
+    background: linear-gradient(135deg, var(--cv-amber) 0%, #e8a050 50%, var(--cv-rust) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cv-subtitle {
+    @apply mt-1.5 text-lg font-light tracking-wide;
+    color: var(--cv-taupe);
+}
+
+.cv-contacts {
+    @apply flex flex-wrap gap-x-6 gap-y-1.5 mt-4;
+}
+
+.cv-contact-item {
+    @apply flex items-center gap-1.5 text-xs;
+    color: rgba(125, 115, 97, 0.85);
+}
+
+.cv-contact-item a {
+    @apply no-underline hover:underline;
+    color: var(--cv-amber);
+}
+
+.cv-contact-dot {
+    @apply w-1.5 h-1.5 rounded-full inline-block shrink-0;
+    background: var(--cv-amber);
+}
+
+/* About Me */
+.cv-about {
+    @apply flex flex-col gap-3 pl-5 border-l-2;
+    border-color: rgba(214, 133, 27, 0.3);
+}
+
+.cv-about-text {
+    @apply text-sm leading-relaxed;
+    color: rgba(255, 240, 220, 0.7);
+}
+
+.cv-about-text strong {
+    color: var(--cv-amber);
+    font-weight: 600;
+}
+
+/* Section title */
+.cv-section-title {
+    @apply flex items-center gap-3 mb-4 text-xs font-bold tracking-widest uppercase;
+    color: var(--cv-amber);
+}
+
+.cv-section-title::after {
+    content: "";
+    @apply flex-1 h-px;
+    background: rgba(214, 133, 27, 0.15);
+}
+
+/* Experience / project entry */
+.cv-entry {
+    @apply relative pl-5 mb-7;
+}
+
+.cv-entry::before {
+    content: "";
+    @apply absolute left-0 top-2 bottom-0 w-px;
+    background: rgba(214, 133, 27, 0.18);
+}
+
+.cv-entry::after {
+    content: "";
+    @apply absolute -left-0.5 top-1.5 w-2 h-2 rounded-full;
+    background: var(--cv-amber);
+    box-shadow: 0 0 8px var(--cv-amber);
+}
+
+.cv-entry-header {
+    @apply flex justify-between items-start flex-wrap gap-1;
+}
+
+.cv-entry-role {
+    @apply text-base font-bold;
+}
+
+.cv-entry-date {
+    @apply text-xs whitespace-nowrap;
+    color: rgba(125, 115, 97, 0.7);
+}
+
+.cv-entry-company {
+    @apply text-sm font-medium mt-0.5;
+    color: #c07a5a;
+}
+
+.cv-entry-desc {
+    @apply text-sm leading-relaxed mt-2;
+    color: rgba(255, 240, 220, 0.55);
+}
+
+/* Tags */
+.cv-tags {
+    @apply flex flex-wrap gap-1.5 mt-2.5;
+}
+
+.cv-tag {
+    @apply text-xs px-3 py-0.5 rounded-full;
+    border: 1px solid rgba(214, 133, 27, 0.25);
+    color: rgba(214, 133, 27, 0.75);
+    background: rgba(214, 133, 27, 0.07);
+}
+
+/* Education */
+.cv-edu-degree {
+    @apply text-sm font-semibold;
+}
+
+.cv-edu-school {
+    @apply text-xs mt-0.5;
+    color: #c07a5a;
+}
+
+.cv-edu-year {
+    @apply text-xs mt-0.5;
+    color: rgba(125, 115, 97, 0.7);
+}
+
+/* Sidebar card */
+.cv-sidebar-card {
+    @apply p-5 rounded-2xl mb-4 backdrop-blur-md;
+    background: rgba(125, 41, 30, 0.08);
+    border: 1px solid rgba(214, 133, 27, 0.12);
+}
+
+/* Skill bars */
+.cv-skill-row {
+    @apply flex items-center gap-3 mb-3;
+}
+
+.cv-skill-name {
+    @apply text-xs w-24 shrink-0;
+    color: rgba(255, 240, 220, 0.65);
+}
+
+.cv-skill-track {
+    @apply flex-1 h-1 rounded-full overflow-hidden;
+    background: rgba(214, 133, 27, 0.1);
+}
+
+.cv-skill-fill {
+    @apply h-full rounded-full;
+    background: linear-gradient(to right, var(--cv-amber), #e8a050);
+}
+
+/* Languages */
+.cv-lang-row {
+    @apply flex justify-between items-center mb-2.5;
+}
+
+.cv-lang-name {
+    @apply text-sm;
+    color: rgba(255, 240, 220, 0.7);
+}
+
+.cv-lang-badge {
+    @apply text-xs px-3 py-0.5 rounded-full;
+    background: rgba(214, 133, 27, 0.12);
+    color: var(--cv-amber);
+    border: 1px solid rgba(214, 133, 27, 0.25);
+}
+
+/* Interests */
+.cv-interests {
+    @apply flex flex-wrap gap-1.5;
+}
+
+.cv-interest-pill {
+    @apply text-xs px-3 py-1 rounded-full;
+    background: rgba(125, 41, 30, 0.18);
+    color: #c07a5a;
+    border: 1px solid rgba(125, 41, 30, 0.35);
+}
