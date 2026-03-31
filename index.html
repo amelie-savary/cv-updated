@@ -10,17 +10,11 @@
 
     <div class="cv-glow cv-glow-tl"></div>
     <div class="cv-glow cv-glow-bl"></div>
-
-    <!-- Toolbar -->
     <div class="cv-toolbar">
-        <!-- NO onclick here — the script below handles the click -->
         <button class="btn-pdf">↓ Export PDF</button>
     </div>
 
-    <!-- Page -->
     <div class="cv-page">
-
-        <!-- Header -->
         <header class="cv-header">
             <h1 class="cv-name">Amélie <span class="cv-name-accent">Savary--Tolstoï</span></h1>
             <p class="cv-subtitle">BUT Métier du Multimédia et de l'Internet · Web Dev & Design</p>
@@ -32,13 +26,8 @@
             </div>
         </header>
 
-        <!-- Two-column body -->
         <div class="cv-body-grid">
-
-            <!-- Main column -->
             <main>
-
-                <!-- About Me -->
                 <section style="margin-bottom: 2.5rem;">
                     <h2 class="cv-section-title">About Me</h2>
                     <div class="cv-about">
@@ -51,7 +40,6 @@
                     </div>
                 </section>
 
-                <!-- Experience -->
                 <section style="margin-bottom: 2.5rem;">
                     <h2 class="cv-section-title">Experience</h2>
 
@@ -71,10 +59,8 @@
                     </div>
                 </section>
 
-                <!-- Projects -->
                 <section style="margin-bottom: 2.5rem;">
                     <h2 class="cv-section-title">Projects</h2>
-
                     <div class="cv-entry">
                         <div class="cv-entry-header">
                             <span class="cv-entry-role">Portfolio 3D — Three.js</span>
@@ -92,7 +78,6 @@
                             <span class="cv-tag">HTML</span>
                         </div>
                     </div>
-
                     <div class="cv-entry">
                         <div class="cv-entry-header">
                             <span class="cv-entry-role">Web doc — React Three Fiber</span>
@@ -108,8 +93,6 @@
                         </div>
                     </div>
                 </section>
-
-                <!-- Education -->
                 <section style="margin-bottom: 2.5rem;">
                     <h2 class="cv-section-title">Education</h2>
 
@@ -118,19 +101,14 @@
                         <div class="cv-edu-school">IUT de Bordeaux Montaigne</div>
                         <div class="cv-edu-year">2023 – 2026 (in progress)</div>
                     </div>
-
                     <div class="cv-entry">
                         <div class="cv-edu-degree">Baccalauréat Général · option NSI & LLCE</div>
                         <div class="cv-edu-school">Lycée Victor Louis, Talence</div>
                         <div class="cv-edu-year">2023 — mention Très Bien</div>
                     </div>
                 </section>
-
             </main>
-
-            <!-- Sidebar -->
             <aside>
-
                 <div class="cv-sidebar-card">
                     <h2 class="cv-section-title">Skills</h2>
                     <div class="cv-skill-row"><span class="cv-skill-name">HTML / CSS</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:95%"></div></div></div>
@@ -141,7 +119,6 @@
                     <div class="cv-skill-row"><span class="cv-skill-name">PHP</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:90%"></div></div></div>
                     <div class="cv-skill-row"><span class="cv-skill-name">R</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:30%"></div></div></div>
                 </div>
-
                 <div class="cv-sidebar-card">
                     <h2 class="cv-section-title">Tools</h2>
                     <div class="cv-skill-row"><span class="cv-skill-name">VS Code</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:85%"></div></div></div>
@@ -152,14 +129,12 @@
                     <div class="cv-skill-row"><span class="cv-skill-name">Affinity</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:50%"></div></div></div>
                     <div class="cv-skill-row"><span class="cv-skill-name">Creative Cloud</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:50%"></div></div></div>
                 </div>
-
                 <div class="cv-sidebar-card">
                     <h2 class="cv-section-title">Languages</h2>
                     <div class="cv-lang-row"><span class="cv-lang-name">French</span><span class="cv-lang-badge">Native</span></div>
                     <div class="cv-lang-row"><span class="cv-lang-name">English</span><span class="cv-lang-badge">C1</span></div>
                     <div class="cv-lang-row"><span class="cv-lang-name">Italian</span><span class="cv-lang-badge">B1</span></div>
                 </div>
-
                 <div class="cv-sidebar-card">
                     <h2 class="cv-section-title">Interests</h2>
                     <div class="cv-interests">
@@ -171,50 +146,50 @@
                         <span class="cv-interest-pill">Music</span>
                     </div>
                 </div>
-
             </aside>
         </div>
     </div>
 
-    <!-- ✅ Scripts at the BOTTOM of body so the DOM is fully loaded -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         document.querySelector('.btn-pdf').addEventListener('click', async () => {
             const btn = document.querySelector('.btn-pdf');
             const toolbar = document.querySelector('.cv-toolbar');
-
+    
             toolbar.style.display = 'none';
             btn.textContent = 'Generating…';
-
+    
             const { jsPDF } = window.jspdf;
-            const page = document.querySelector('.cv-page');
-
-            const canvas = await html2canvas(page, {
+    
+            const canvas = await html2canvas(document.body, {
                 scale: 2,
                 useCORS: true,
                 backgroundColor: '#030412',
                 logging: false,
+                windowWidth: document.body.scrollWidth,
+                windowHeight: document.body.scrollHeight,
+                scrollX: 0,
+                scrollY: 0,
             });
-
+    
             const imgData = canvas.toDataURL('image/png');
-
+    
             const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
             const pdfW = pdf.internal.pageSize.getWidth();
             const pdfH = pdf.internal.pageSize.getHeight();
-
-            const imgW = pdfW;
+    
             const imgH = (canvas.height * pdfW) / canvas.width;
-
+    
             if (imgH > pdfH) {
                 const scale = pdfH / imgH;
-                pdf.addImage(imgData, 'PNG', 0, 0, imgW * scale, pdfH);
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfW * scale, pdfH);
             } else {
-                pdf.addImage(imgData, 'PNG', 0, 0, imgW, imgH);
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfW, imgH);
             }
-
+    
             pdf.save('amelie-savary-tolstoi-cv.pdf');
-
+    
             toolbar.style.display = '';
             btn.textContent = '↓ Export PDF';
         });
