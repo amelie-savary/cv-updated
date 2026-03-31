@@ -21,6 +21,16 @@ body {
     margin: 0;
 }
 
+.cv-container {
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+}
+
+
 /* Toolbar */
 .cv-toolbar {
     position: fixed;
