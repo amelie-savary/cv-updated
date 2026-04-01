@@ -1,151 +1,229 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amélie — CV</title>
-    <link rel="stylesheet" href="cv.css" />
+    <link rel="stylesheet" href="src/cv.css" />
 </head>
 <body>
 
-    <div class="cv-glow cv-glow-tl"></div>
-    <div class="cv-glow cv-glow-bl"></div>
-    <div class="cv-toolbar">
-        <button class="btn-pdf">↓ Export PDF</button>
+    <div class="cv-glow cv-glow-tl fixed pointer-events-none rounded-full opacity-15 w-[500px] h-[500px] -top-36 -right-24"></div>
+    <div class="cv-glow cv-glow-bl fixed pointer-events-none rounded-full opacity-15 w-[400px] h-[400px] bottom-0 -left-24"></div>
+
+    <!-- Toolbar -->
+    <div class="fixed top-6 right-6 z-50 flex gap-3 items-center">
+        <a href="index.html" class="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-medium bg-white/5 border border-white/20 text-white/60 no-underline cursor-pointer hover:bg-white/10 hover:text-white hover:-translate-y-0.5 duration-200">← Back</a>
+        <button class="btn-pdf inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-bold border-transparent cursor-pointer hover:-translate-y-0.5 duration-200" onclick="window.print()">↓ Export PDF</button>
     </div>
 
-    <div class="cv-page">
-        <header class="cv-header">
-            <h1 class="cv-name">Amélie <span class="cv-name-accent">Savary--Tolstoï</span></h1>
-            <p class="cv-subtitle">BUT Multimedia and Internet · Web Dev & Design</p>
-            <div class="cv-contacts">
-                <span class="cv-contact-item"><span class="cv-contact-dot"></span>Bordeaux, France</span>
-                <span class="cv-contact-item"><span class="cv-contact-dot"></span><a href="mailto:amelie.savary--tolstoi@mmibordeaux.com">amelie.savary--tolstoi@mmibordeaux.com</a></span>
-                <span class="cv-contact-item"><span class="cv-contact-dot"></span><a href="https://github.com/amelie-savary" target="_blank">github.com/amelie-savary</a></span>
-                <span class="cv-contact-item"><span class="cv-contact-dot"></span><a href="https://www.linkedin.com/in/am%C3%A9lie-savary-tolsto%C3%AF-15ab85331/" target="_blank">linkedin.com/in/amelie-savary-tolstoi</a></span>
+    <!-- Page -->
+    <div class="max-w-4xl mx-auto px-5 sm:px-10 pt-28 pb-20">
+
+        <!-- Header -->
+        <header class="cv-header pb-8 mb-10 relative">
+            <h1 class="cv-name text-5xl md:text-6xl font-black leading-none tracking-tight">Amélie <span class="cv-name-accent">Savary--Tolstoï</span></h1>
+            <p class="cv-subtitle mt-1.5 text-xl font-light tracking-wide">BUT Multimedia and Internet · Web Dev & Design</p>
+            <div class="flex items-center gap-1.5 text-sm grid grid-cols-2 gap-x-6 gap-y-2 mt-4 max-w-fit">
+                <span class="flex items-center gap-1.5 text-sm" style="color: color-mix(in srgb, var(--cv-taupe) 90%, white)"><span class="w-1.5 h-1.5 rounded-full inline-block shrink-0" style="background: var(--cv-amber)"></span>Bordeaux, France</span>
+                <span class="flex items-center gap-1.5 text-sm" style="color: color-mix(in srgb, var(--cv-taupe) 90%, white)"><span class="w-1.5 h-1.5 rounded-full inline-block shrink-0" style="background: var(--cv-amber)"></span><a href="mailto:amelie.savary--tolstoi@mmibordeaux.com" class="no-underline hover:underline" style="color: var(--cv-amber)">amelie.savary--tolstoi@mmibordeaux.com</a></span>
+                <span class="flex items-center gap-1.5 text-sm" style="color: color-mix(in srgb, var(--cv-taupe) 90%, white)"><span class="w-1.5 h-1.5 rounded-full inline-block shrink-0" style="background: var(--cv-amber)"></span><a href="https://github.com/amelie-savary" target="_blank" class="no-underline hover:underline" style="color: var(--cv-amber)">github.com/amelie-savary</a></span>
+                <span class="flex items-center gap-1.5 text-sm" style="color: color-mix(in srgb, var(--cv-taupe) 90%, white)"><span class="w-1.5 h-1.5 rounded-full inline-block shrink-0" style="background: var(--cv-amber)"></span><a href="https://www.linkedin.com/in/am%C3%A9lie-savary-tolsto%C3%AF-15ab85331/" target="_blank" class="no-underline hover:underline" style="color: var(--cv-amber)">linkedin.com/in/amelie-savary-tolstoi</a></span>
             </div>
         </header>
 
-        <div class="cv-body-grid">
+        <!-- Two-column body -->
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_268px] gap-10 items-start">
+
+            <!-- Main column -->
             <main>
-                <section style="margin-bottom: 2.5rem;">
+
+                <!-- About Me -->
+                <section class="mb-10">
                     <h2 class="cv-section-title">About Me</h2>
-                    <div class="cv-about">
-                        <p class="cv-about-text">
+                    <div class="flex flex-col gap-3 pl-5 border-l-2" style="border-color: color-mix(in srgb, var(--cv-amber) 50%, transparent)">
+                        <p class="text-base leading-relaxed" style="color: rgba(255, 240, 220, 0.7)">
                             I'm a second-year MMI student based in Bordeaux, passionate about building things for the web — from interactive 3D experiences to polished interfaces. I care deeply about the craft: clean code, thoughtful design, and experiences that feel alive.
                         </p>
-                        <p class="cv-about-text">
-                            Outside of coding, you'll find me deep in a fantasy novel, sculpting 3D models in Blender, or lost in a video game for hours. I'm currently looking for an <strong>internship</strong> where I can bring both my dev skills and design sensibility to a real project.
+                        <p class="text-base leading-relaxed" style="color: rgba(255, 240, 220, 0.7)">
+                            Outside of coding, you'll find me deep in a fantasy novel, sculpting 3D models in Blender, or lost in a video game for hours. I'm currently looking for an <strong style="color: var(--cv-amber); font-weight: 600">internship</strong> where I can bring both my dev skills and design sensibility to a real project.
                         </p>
                     </div>
                 </section>
 
-                <section style="margin-bottom: 2.5rem;">
+                <!-- Experience -->
+                <section class="mb-10">
                     <h2 class="cv-section-title">Experience</h2>
 
-                    <div class="cv-entry">
-                        <div class="cv-entry-header">
-                            <span class="cv-entry-role">Data Analyst Intern</span>
-                            <span class="cv-entry-date">March 2025 – Aug 2025</span>
+                    <div class="cv-entry relative pl-6 mb-7">
+                        <div class="flex justify-between items-start flex-wrap gap-1">
+                            <span class="text-lg font-bold">Data Analyst Intern</span>
+                            <span class="text-sm whitespace-nowrap" style="color: var(--cv-taupe)">March 2025 – Aug 2025</span>
                         </div>
-                        <div class="cv-entry-company">CHU Bordeaux · Bordeaux</div>
-                        <p class="cv-entry-desc">
+                        <div class="text-base font-medium mt-0.5" style="color: var(--color-orange)">CHU Bordeaux · Bordeaux</div>
+                        <p class="text-base leading-relaxed mt-2" style="color: rgba(255, 240, 220, 0.6)">
                             Conducted data analysis and visualization for clinical research projects. Developed automated reporting scripts using R and RStudio.
                         </p>
-                        <div class="cv-tags">
-                            <span class="cv-tag">R</span>
-                            <span class="cv-tag">RStudio</span>
+                        <div class="flex flex-wrap gap-1.5 mt-2.5">
+                            <span class="cv-tag text-sm px-3 py-0.5 rounded-full">R</span>
+                            <span class="cv-tag text-sm px-3 py-0.5 rounded-full">RStudio</span>
                         </div>
                     </div>
                 </section>
 
-                <section style="margin-bottom: 2.5rem;">
+                <!-- Projects -->
+                <section class="mb-10">
                     <h2 class="cv-section-title">Projects</h2>
-                    <div class="cv-entry">
-                        <div class="cv-entry-header">
-                            <span class="cv-entry-role">Portfolio 3D — Three.js</span>
-                            <span class="cv-entry-date">2026</span>
+
+                    <div class="cv-entry relative pl-6 mb-7">
+                        <div class="flex justify-between items-start flex-wrap gap-1">
+                            <span class="text-lg font-bold">Portfolio 3D — Three.js</span>
+                            <span class="text-sm whitespace-nowrap" style="color: var(--cv-taupe)">2026</span>
                         </div>
-                        <p class="cv-entry-desc">
+                        <p class="text-base leading-relaxed mt-2" style="color: rgba(255, 240, 220, 0.6)">
                             Interactive 3D portfolio with custom models, orbit controls and responsive layout.
                         </p>
-                        <div class="cv-tags">
-                            <span class="cv-tag">Three.js</span>
-                            <span class="cv-tag">GLSL</span>
-                            <span class="cv-tag">Vite</span>
-                            <span class="cv-tag">React</span>
-                            <span class="cv-tag">Tailwind CSS</span>
-                            <span class="cv-tag">HTML</span>
+                        <div class="flex flex-wrap gap-1.5 mt-2.5">
+                            <span class="cv-tag text-sm px-3 py-0.5 rounded-full">Three.js</span>
+                            <span class="cv-tag text-sm px-3 py-0.5 rounded-full">GLSL</span>
+                            <span class="cv-tag text-sm px-3 py-0.5 rounded-full">Vite</span>
+                            <span class="cv-tag text-sm px-3 py-0.5 rounded-full">React</span>
+                            <span class="cv-tag text-sm px-3 py-0.5 rounded-full">Tailwind CSS</span>
+                            <span class="cv-tag text-sm px-3 py-0.5 rounded-full">HTML</span>
                         </div>
                     </div>
-                    <div class="cv-entry">
-                        <div class="cv-entry-header">
-                            <span class="cv-entry-role">Web doc — React Three Fiber</span>
-                            <span class="cv-entry-date">2025</span>
+
+                    <div class="cv-entry relative pl-6 mb-7">
+                        <div class="flex justify-between items-start flex-wrap gap-1">
+                            <span class="text-lg font-bold">Web doc — React Three Fiber</span>
+                            <span class="text-sm whitespace-nowrap" style="color: var(--cv-taupe)">2025</span>
                         </div>
-                        <p class="cv-entry-desc">
+                        <p class="text-base leading-relaxed mt-2" style="color: rgba(255, 240, 220, 0.6)">
                             Interactive web documentary on a 3D scene talking about women in video games, made alone using react three fiber.
                         </p>
-                        <div class="cv-tags">
-                            <span class="cv-tag">React</span>
-                            <span class="cv-tag">Node.js</span>
-                            <span class="cv-tag">Three.js</span>
+                        <div class="flex flex-wrap gap-1.5 mt-2.5">
+                            <span class="cv-tag text-sm px-3 py-0.5 rounded-full">React</span>
+                            <span class="cv-tag text-sm px-3 py-0.5 rounded-full">Node.js</span>
+                            <span class="cv-tag text-sm px-3 py-0.5 rounded-full">Three.js</span>
                         </div>
                     </div>
                 </section>
-                <section style="margin-bottom: 2.5rem;">
+
+                <!-- Education -->
+                <section class="mb-10">
                     <h2 class="cv-section-title">Education</h2>
 
-                    <div class="cv-entry">
-                        <div class="cv-edu-degree">BUT Métier du Multimédia et de l'Internet</div>
-                        <div class="cv-edu-school">IUT de Bordeaux Montaigne</div>
-                        <div class="cv-edu-year">2023 – 2026 (in progress)</div>
+                    <div class="cv-entry relative pl-6 mb-7">
+                        <div class="text-base font-semibold">BUT Métier du Multimédia et de l'Internet</div>
+                        <div class="text-sm mt-0.5" style="color: var(--color-orange)">IUT de Bordeaux Montaigne</div>
+                        <div class="text-sm mt-0.5" style="color: var(--cv-taupe)">2023 – 2026 (in progress)</div>
                     </div>
-                    <div class="cv-entry">
-                        <div class="cv-edu-degree">Baccalauréat Général · option NSI & LLCE</div>
-                        <div class="cv-edu-school">Lycée Victor Louis, Talence</div>
-                        <div class="cv-edu-year">2023 — mention Très Bien</div>
+
+                    <div class="cv-entry relative pl-6 mb-7">
+                        <div class="text-base font-semibold">Baccalauréat Général · option NSI & LLCE</div>
+                        <div class="text-sm mt-0.5" style="color: var(--color-orange)">Lycée Victor Louis, Talence</div>
+                        <div class="text-sm mt-0.5" style="color: var(--cv-taupe)">2023 — mention Très Bien</div>
                     </div>
                 </section>
+
             </main>
+
+            <!-- Sidebar -->
             <aside>
-                <div class="cv-sidebar-card">
+
+                <div class="p-5 rounded-2xl mb-4 backdrop-blur-md" style="background: color-mix(in srgb, var(--cv-rust) 10%, transparent); border: 2px solid color-mix(in srgb, var(--cv-amber) 20%, transparent)">
                     <h2 class="cv-section-title">Skills</h2>
-                    <div class="cv-skill-row"><span class="cv-skill-name">HTML / CSS</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:95%"></div></div></div>
-                    <div class="cv-skill-row"><span class="cv-skill-name">JavaScript</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:85%"></div></div></div>
-                    <div class="cv-skill-row"><span class="cv-skill-name">React</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:80%"></div></div></div>
-                    <div class="cv-skill-row"><span class="cv-skill-name">Three.js</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:60%"></div></div></div>
-                    <div class="cv-skill-row"><span class="cv-skill-name">Laravel</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:75%"></div></div></div>
-                    <div class="cv-skill-row"><span class="cv-skill-name">PHP</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:90%"></div></div></div>
-                    <div class="cv-skill-row"><span class="cv-skill-name">R</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:30%"></div></div></div>
-                </div>
-                <div class="cv-sidebar-card">
-                    <h2 class="cv-section-title">Tools</h2>
-                    <div class="cv-skill-row"><span class="cv-skill-name">VS Code</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:85%"></div></div></div>
-                    <div class="cv-skill-row"><span class="cv-skill-name">Git & GitHub</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:70%"></div></div></div>
-                    <div class="cv-skill-row"><span class="cv-skill-name">Figma</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:75%"></div></div></div>
-                    <div class="cv-skill-row"><span class="cv-skill-name">Blender</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:50%"></div></div></div>
-                    <div class="cv-skill-row"><span class="cv-skill-name">Davinci Resolve</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:70%"></div></div></div>
-                    <div class="cv-skill-row"><span class="cv-skill-name">Affinity</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:50%"></div></div></div>
-                    <div class="cv-skill-row"><span class="cv-skill-name">Creative Cloud</span><div class="cv-skill-track"><div class="cv-skill-fill" style="width:50%"></div></div></div>
-                </div>
-                <div class="cv-sidebar-card">
-                    <h2 class="cv-section-title">Languages</h2>
-                    <div class="cv-lang-row"><span class="cv-lang-name">French</span><span class="cv-lang-badge">Native</span></div>
-                    <div class="cv-lang-row"><span class="cv-lang-name">English</span><span class="cv-lang-badge">C1</span></div>
-                    <div class="cv-lang-row"><span class="cv-lang-name">Italian</span><span class="cv-lang-badge">B1</span></div>
-                </div>
-                <div class="cv-sidebar-card">
-                    <h2 class="cv-section-title">Interests</h2>
-                    <div class="cv-interests">
-                        <span class="cv-interest-pill">Video Games</span>
-                        <span class="cv-interest-pill">3D Art</span>
-                        <span class="cv-interest-pill">Fiction Writing</span>
-                        <span class="cv-interest-pill">Fantasy</span>
-                        <span class="cv-interest-pill">Retro Technology</span>
-                        <span class="cv-interest-pill">Music</span>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">HTML / CSS</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:95%; background: var(--cv-amber)"></div></div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">JavaScript</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:85%; background: var(--cv-amber)"></div></div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">React</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:80%; background: var(--cv-amber)"></div></div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">Three.js</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:60%; background: var(--cv-amber)"></div></div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">Laravel</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:75%; background: var(--cv-amber)"></div></div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">PHP</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:90%; background: var(--cv-amber)"></div></div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">R</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:30%; background: var(--cv-amber)"></div></div>
                     </div>
                 </div>
+
+                <div class="p-5 rounded-2xl mb-4 backdrop-blur-md" style="background: color-mix(in srgb, var(--cv-rust) 10%, transparent); border: 2px solid color-mix(in srgb, var(--cv-amber) 20%, transparent)">
+                    <h2 class="cv-section-title">Tools</h2>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">Vs Code</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:85%; background: var(--cv-amber)"></div></div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">Git & GitHub</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:70%; background: var(--cv-amber)"></div></div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">Figma</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:75%; background: var(--cv-amber)"></div></div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">Blender</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:50%; background: var(--cv-amber)"></div></div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">Davinci Resolve</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:70%; background: var(--cv-amber)"></div></div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">Affinity</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:50%; background: var(--cv-amber)"></div></div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-sm w-24 shrink-0" style="color: rgba(255, 240, 220, 0.7)">Creative Cloud</span>
+                        <div class="flex-1 h-2.5 rounded-full overflow-hidden" style="background: color-mix(in srgb, var(--cv-amber) 20%, transparent)"><div class="h-full rounded-full" style="width:50%; background: var(--cv-amber)"></div></div>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl mb-4 backdrop-blur-md" style="background: color-mix(in srgb, var(--cv-rust) 10%, transparent); border: 2px solid color-mix(in srgb, var(--cv-amber) 20%, transparent)">
+                    <h2 class="cv-section-title">Languages</h2>
+                    <div class="flex justify-between items-center mb-2.5">
+                        <span class="text-base" style="color: rgba(255, 240, 220, 0.7)">French</span>
+                        <span class="text-sm px-3 py-0.5 rounded-full" style="background: color-mix(in srgb, var(--cv-amber) 15%, transparent); color: var(--cv-amber); border: 2px solid color-mix(in srgb, var(--cv-amber) 30%, transparent)">Native</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2.5">
+                        <span class="text-base" style="color: rgba(255, 240, 220, 0.7)">English</span>
+                        <span class="text-sm px-3 py-0.5 rounded-full" style="background: color-mix(in srgb, var(--cv-amber) 15%, transparent); color: var(--cv-amber); border: 2px solid color-mix(in srgb, var(--cv-amber) 30%, transparent)">C1</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2.5">
+                        <span class="text-base" style="color: rgba(255, 240, 220, 0.7)">Italian</span>
+                        <span class="text-sm px-3 py-0.5 rounded-full" style="background: color-mix(in srgb, var(--cv-amber) 15%, transparent); color: var(--cv-amber); border: 2px solid color-mix(in srgb, var(--cv-amber) 30%, transparent)">B1</span>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl mb-4 backdrop-blur-md" style="background: color-mix(in srgb, var(--cv-rust) 10%, transparent); border: 2px solid color-mix(in srgb, var(--cv-amber) 20%, transparent)">
+                    <h2 class="cv-section-title">Interests</h2>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="text-sm px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--cv-rust) 20%, transparent); color: var(--color-sand); border: 2px solid color-mix(in srgb, var(--cv-rust) 40%, transparent)">Video Games</span>
+                        <span class="text-sm px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--cv-rust) 20%, transparent); color: var(--color-sand); border: 2px solid color-mix(in srgb, var(--cv-rust) 40%, transparent)">3D Art</span>
+                        <span class="text-sm px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--cv-rust) 20%, transparent); color: var(--color-sand); border: 2px solid color-mix(in srgb, var(--cv-rust) 40%, transparent)">Fiction Writing</span>
+                        <span class="text-sm px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--cv-rust) 20%, transparent); color: var(--color-sand); border: 2px solid color-mix(in srgb, var(--cv-rust) 40%, transparent)">Fantasy</span>
+                        <span class="text-sm px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--cv-rust) 20%, transparent); color: var(--color-sand); border: 2px solid color-mix(in srgb, var(--cv-rust) 40%, transparent)">Retro Technology</span>
+                        <span class="text-sm px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--cv-rust) 20%, transparent); color: var(--color-sand); border: 2px solid color-mix(in srgb, var(--cv-rust) 40%, transparent)">Music</span>
+                    </div>
+                </div>
+
             </aside>
         </div>
     </div>
