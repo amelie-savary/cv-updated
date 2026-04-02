@@ -273,6 +273,32 @@
         btn.textContent = '↓ Export PDF';
       });
     </script>
-
+    <style>
+        @media print {
+          * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+        
+          .fixed { display: none !important; }
+        
+          .cv-glow { display: none !important; }
+        
+          @page {
+            margin: 0;
+            size: A4;
+          }
+        
+          body {
+            background: #1a0f08 !important;
+            margin: 0;
+          }
+          .pt-28 { padding-top: 1.5rem !important; }
+        
+          .cv-entry, aside > div, section {
+            break-inside: avoid;
+          }
+        }
+    </style>
 </body>
 </html>
