@@ -84,7 +84,7 @@
                             <span class="text-sm whitespace-nowrap" style="color: var(--cv-taupe)">2026</span>
                         </div>
                         <p class="text-base leading-relaxed mt-2" style="color: rgba(255, 240, 220, 0.6)">
-                            Interactive 3D portfolio with custom models, orbit controls and responsive layout.
+                            Interactive 3D portfolio with custom models, orbit controls and responsive layout. (work in progress, will update link to portfolio when it is done)
                         </p>
                         <div class="flex flex-wrap gap-1.5 mt-2.5">
                             <span class="cv-tag text-sm px-3 py-0.5 rounded-full">Three.js</span>
@@ -232,73 +232,104 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
     <script>
-      document.querySelector('.btn-pdf').addEventListener('click', async () => {
-        const btn = document.querySelector('.btn-pdf');
-        const toolbar = document.querySelector('.cv-toolbar');
-    
-        toolbar.style.display = 'none';
-        btn.textContent = 'Generating…';
-    
-        const { jsPDF } = window.jspdf;
-        const page = document.querySelector('.cv-page');
-    
-        const canvas = await html2canvas(page, {
-          scale: 2,
-          useCORS: true,
-          backgroundColor: '#030412',
-          logging: false,
+        document.querySelector('.btn-pdf').addEventListener('click', async () => {
+          const btn = document.querySelector('.btn-pdf');
+          const toolbar = document.querySelector('.fixed');
+        
+          btn.textContent = 'Generating…';
+          btn.disabled = true;
+          toolbar.style.opacity = '0';
+        
+          const allEls = document.querySelectorAll('*');
+          const saved = [];
+        
+          allEls.forEach(el => {
+            const computed = getComputedStyle(el);
+            const props = ['background', 'backgroundColor', 'color', 'borderColor',
+                           'borderTopColor', 'borderLeftColor'];
+            const inline = {};
+        
+            props.forEach(prop => {
+              const val = computed[prop];
+              if (val && (val.includes('color-mix') || val.includes('var('))) {
+                inline[prop] = el.style[prop];
+              }
+            });
+        
+            saved.push({ el, style: el.getAttribute('style') });
+        
+            const bg = computed.backgroundColor;
+            const color = computed.color;
+            const border = computed.borderColor;
+        
+            if (bg && bg !== 'rgba(0, 0, 0, 0)' && !bg.includes('color-mix')) {
+              el.style.backgroundColor = bg;
+            }
+            if (color && !color.includes('color-mix')) {
+              el.style.color = color;
+            }
+            if (border && !border.includes('color-mix')) {
+              el.style.borderColor = border;
+            }
+          });
+        
+          await new Promise(r => setTimeout(r, 100));
+        
+          const { jsPDF } = window.jspdf;
+        
+          const canvas = await html2canvas(document.body, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#1a0a02',
+            logging: false,
+            ignoreElements: el => el.classList.contains('fixed'),
+            windowWidth: 900,
+          });
+        
+          saved.forEach(({ el, style }) => {
+            if (style === null) el.removeAttribute('style');
+            else el.setAttribute('style', style);
+          });
+        
+          toolbar.style.opacity = '';
+        
+          const imgData = canvas.toDataURL('image/jpeg', 0.95);
+          const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+          const pdfW = pdf.internal.pageSize.getWidth();
+          const pdfH = pdf.internal.pageSize.getHeight();
+        
+          const ratio = canvas.width / canvas.height;
+          const imgH = pdfW / ratio;
+        
+          if (imgH <= pdfH) {
+            pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, imgH);
+          } else {
+            const pageHeightPx = Math.floor(canvas.width * (pdfH / pdfW));
+            let yOffset = 0;
+            let pageNum = 0;
+        
+            while (yOffset < canvas.height) {
+              const sliceH = Math.min(pageHeightPx, canvas.height - yOffset);
+              const pageCanvas = document.createElement('canvas');
+              pageCanvas.width = canvas.width;
+              pageCanvas.height = sliceH;
+              pageCanvas.getContext('2d').drawImage(canvas, 0, -yOffset);
+        
+              const pageImg = pageCanvas.toDataURL('image/jpeg', 0.95);
+              if (pageNum > 0) pdf.addPage();
+              pdf.addImage(pageImg, 'JPEG', 0, 0, pdfW, pdfH * (sliceH / pageHeightPx));
+        
+              yOffset += pageHeightPx;
+              pageNum++;
+            }
+          }
+        
+          pdf.save('amelie-savary-tolstoi-cv.pdf');
+          btn.textContent = '↓ Export PDF';
+          btn.disabled = false;
         });
-    
-        const imgData = canvas.toDataURL('image/png');
-    
-        const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-        const pdfW = pdf.internal.pageSize.getWidth();
-        const pdfH = pdf.internal.pageSize.getHeight();
-    
-        const imgW = pdfW;
-        const imgH = (canvas.height * pdfW) / canvas.width;
-    
-        if (imgH > pdfH) {
-          const scale = pdfH / imgH;
-          pdf.addImage(imgData, 'PNG', 0, 0, imgW * scale, pdfH);
-        } else {
-          pdf.addImage(imgData, 'PNG', 0, 0, imgW, imgH);
-        }
-    
-        pdf.save('amelie-savary-tolstoi-cv.pdf');
-    
-        toolbar.style.display = '';
-        btn.textContent = '↓ Export PDF';
-      });
     </script>
-    <style>
-        @media print {
-          * {
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-          }
-        
-          .fixed { display: none !important; }
-        
-          .cv-glow { display: none !important; }
-        
-          @page {
-            margin: 0;
-            size: A4;
-          }
-        
-          body {
-            background: #1a0f08 !important;
-            margin: 0;
-          }
-          .pt-28 { padding-top: 1.5rem !important; }
-        
-          .cv-entry, aside > div, section {
-            break-inside: avoid;
-          }
-        }
-    </style>
 </body>
 </html>
